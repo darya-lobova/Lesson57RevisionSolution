@@ -14,6 +14,7 @@ int count_rows_with_more_positive_values(int matrix[DEFAULT_SIZE][DEFAULT_SIZE],
 		return -1;
 	}
 	int count_positive = 0;
+	int count_not_positive = 0;
 	int result = 0;
 
 	for (int i = 0; i < n; i++)
@@ -23,10 +24,15 @@ int count_rows_with_more_positive_values(int matrix[DEFAULT_SIZE][DEFAULT_SIZE],
 			if (matrix[i][j] > 0) {
 				count_positive++;
 			}
+			else {
+				count_not_positive++;
+			}
+
+		}
+		if (count_positive > count_not_positive) {
+			result++;
 		}
 	}
-	if (n - count_positive > n / 2) {
-		result++;
-	}
+
 	return result;
 }
